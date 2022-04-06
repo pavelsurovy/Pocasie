@@ -22,7 +22,7 @@ struct ContentView: View {
                 Map(coordinateRegion: $mapRegion, annotationItems: Location.exampleLocations) { location in
                     MapAnnotation(coordinate: location.coordinates) {
                         NavigationLink {
-                            DetailView(name: location.name)
+                            DetailView(name: location.name, miesto: location.coordinates)
                         } label: {
                             VStack {
                                 Image(systemName: "mappin.circle.fill")
