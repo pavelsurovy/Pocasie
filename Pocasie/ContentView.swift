@@ -56,9 +56,10 @@ struct ContentView: View {
                 
             }
             .ignoresSafeArea()
-//            .onAppear {
+            .onAppear {
 //                lokality.append(bratislava)
-//            }
+                resolve()
+            }
         }
         .navigationViewStyle(.stack)
     }
@@ -92,6 +93,22 @@ struct ContentView: View {
             
             let newLocation = Lokality(name: displayLocationName, latitude: coordinates.latitude, longitude: coordinates.longitude)
             lokality.append(newLocation)
+            
+            save()
+        }
+    }
+    
+    func resolve() {
+        if let data = UserDefaults.standard.data(forKey: "MapLocations") {
+            if let decoded = try? JSONDecoder().decode([Lokality].self, from: data) {
+                lokality = decoded
+            }
+        }
+    }
+    
+    func save() {
+        if let encoded = try? JSONEncoder().encode(lokality) {
+            UserDefaults.standard.set(encoded, forKey: "MapLocations")
         }
     }
 }
