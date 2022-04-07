@@ -5,10 +5,11 @@
 //  Created by Palino on 06/04/2022.
 //
 
-import CoreLocation
+import Foundation
 
-struct Lokality: Identifiable {
-    let id = UUID()
+struct Lokality: Identifiable, Codable {
+    var id = UUID()
     let name: String
-    let coordinates: CLLocationCoordinate2D
+    let latitude: Double
+    let longitude: Double
 }

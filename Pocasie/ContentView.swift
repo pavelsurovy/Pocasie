@@ -16,15 +16,15 @@ struct ContentView: View {
     @State private var lokality = [Lokality]()
     
     let iconSize: CGFloat = 30
-    let bratislava = Lokality(name: "Bratislava", coordinates: CLLocationCoordinate2D(latitude: 48.1458923, longitude: 17.1071373))
+//    let bratislava = Lokality(name: "Bratislava", coordinates: CLLocationCoordinate2D(latitude: 48.1458923, longitude: 17.1071373))
     
     var body: some View {
         NavigationView {
             ZStack {
                 Map(coordinateRegion: $mapView, annotationItems: lokality) { lokalita in
-                    MapAnnotation(coordinate: lokalita.coordinates) {
+                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: lokalita.latitude, longitude: lokalita.longitude)) {
                         NavigationLink {
-                            DetailView(name: lokalita.name, coordinates: lokalita.coordinates)
+                            DetailView(name: lokalita.name, latitude: lokalita.latitude, longitude: lokalita.longitude)
                         } label: {
                             
                             VStack {
@@ -56,9 +56,9 @@ struct ContentView: View {
                 
             }
             .ignoresSafeArea()
-            .onAppear {
-                lokality.append(bratislava)
-            }
+//            .onAppear {
+//                lokality.append(bratislava)
+//            }
         }
         .navigationViewStyle(.stack)
     }
@@ -70,7 +70,7 @@ struct ContentView: View {
         geocoder.reverseGeocodeLocation(CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)) { placemark, error in
             
             if error != nil {
-                print("Error: \(error?.localizedDescription ?? "N/A")")
+                print("Error: \(error?.localizedDescription ?? "Unknown Error")")
                 return
             }
 
@@ -90,7 +90,7 @@ struct ContentView: View {
                 }
             }
             
-            let newLocation = Lokality(name: displayLocationName, coordinates: coordinates)
+            let newLocation = Lokality(name: displayLocationName, latitude: coordinates.latitude, longitude: coordinates.longitude)
             lokality.append(newLocation)
         }
     }
