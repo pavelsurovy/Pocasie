@@ -9,28 +9,31 @@ import MapKit
 import SwiftUI
 
 struct ContentView: View {
-    @State private var mapRegion = MKCoordinateRegion(
+    @State private var mapView = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 48.92, longitude: 19.64),
         span: MKCoordinateSpan(latitudeDelta: 7, longitudeDelta: 7))
-
-    @State private var locations = [Location]()
-        
+    
+    @State private var lokality = [Lokality]()
+    
+    let iconSize: CGFloat = 30
+    let bratislava = Lokality(name: "Bratislava", coordinates: CLLocationCoordinate2D(latitude: 48.1458923, longitude: 17.1071373))
+    
     var body: some View {
-        
         NavigationView {
             ZStack {
-                Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
-                    MapAnnotation(coordinate: location.coordinates) {
+                Map(coordinateRegion: $mapView, annotationItems: lokality) { lokalita in
+                    MapAnnotation(coordinate: lokalita.coordinates) {
                         NavigationLink {
-                            DetailView(name: location.name, miesto: location.coordinates)
+                            DetailView(name: lokalita.name, coordinates: lokalita.coordinates)
                         } label: {
+                            
                             VStack {
                                 Image(systemName: "mappin.circle.fill")
                                     .resizable()
-                                    .frame(width: 30, height: 30)
+                                    .frame(width: iconSize, height: iconSize)
                                     .foregroundColor(.red)
-
-                                Text(location.name)
+                                
+                                Text(lokalita.name)
                                     .foregroundColor(.primary)
                                     .font(.caption)
                             }
@@ -38,62 +41,58 @@ struct ContentView: View {
                     }
                 }
                 
-                Image(systemName: "plus.circle")
-                    .opacity(0.3)
-                    .foregroundColor(.teal)
-                    .frame(width: 15, height: 15)
-                    .offset(x:0, y: 50)
-                
-                VStack {
-                    Spacer()
+                Button {
                     
-                    HStack {
-                        Spacer()
-                        
-                        Button {
-                            createLocation(coordinates: mapRegion.center)
-                            
-                        } label: {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 44, height: 44)
-                                .foregroundColor(.teal)
-                                .opacity(0.5)
-                                .padding(40)
-                                .padding(.bottom, 20)
-                        }
-                    }
+                    pridajLokalitu(coordinates: mapView.center)
+                    
+                } label: {
+                    Image(systemName: "plus.circle")
+                        .resizable()
+                        .frame(width: iconSize, height: iconSize)
+                        .foregroundColor(.teal)
+                        .opacity(0.4)
                 }
+                .offset(y: iconSize * 2)
                 
             }
             .ignoresSafeArea()
+            .onAppear {
+                lokality.append(bratislava)
+            }
         }
+        .navigationViewStyle(.stack)
     }
     
-    func createLocation(coordinates: CLLocationCoordinate2D) {
-        print(coordinates.latitude)
-        print(coordinates.longitude)
+    func pridajLokalitu(coordinates: CLLocationCoordinate2D) {
+        // zisti nazov lokality
         
-        // get locality name
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)) { placemark, error in
-            guard error == nil else {
-                print("some error occured")
+            
+            if error != nil {
+                print("Error: \(error?.localizedDescription ?? "N/A")")
                 return
             }
-            
-            if let firstLocation = placemark?.first  {
-                
-                print(firstLocation.locality)
 
-                let newLocation = Location(name: firstLocation.locality ?? "N/A", coordinates: coordinates)
-                locations.append(newLocation)
+            guard let firstLocation = placemark?.first else { return }
+            
+            var displayLocationName = ""
+            
+            if firstLocation.locality != nil {
+                displayLocationName += firstLocation.locality!
+            
+            } else {
+                if firstLocation.subAdministrativeArea != nil {
+                    displayLocationName += firstLocation.subAdministrativeArea!
                 
+                } else {
+                    displayLocationName += firstLocation.name ?? "Nowhere"
+                }
             }
+            
+            let newLocation = Lokality(name: displayLocationName, coordinates: coordinates)
+            lokality.append(newLocation)
         }
-        
-        // save location - not yet!
-        
     }
 }
 
