@@ -18,7 +18,7 @@ struct DetailView: View {
         Text("\(miesto.longitude)")
         
         .task {
-            getRemoteData(lat: 40.1, lon: 21.2)
+            getRemoteData(lat: miesto.latitude, lon: miesto.longitude)
         }
         
     }
@@ -33,7 +33,7 @@ struct DetailView: View {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             
-            if let error = error {
+            if error != nil {
                 print("we have an error")
                 return
             }
@@ -44,10 +44,8 @@ struct DetailView: View {
             }
             
             if let json = try? JSONSerialization.jsonObject(with: data) {
-                print("we have data! \(json)")
+                print("we have data!\n \(json)")
             }
-            
-            print(response)
         }
         
         task.resume()

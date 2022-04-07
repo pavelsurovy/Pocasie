@@ -12,14 +12,14 @@ struct ContentView: View {
     @State private var mapRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 48.92, longitude: 19.64),
         span: MKCoordinateSpan(latitudeDelta: 7, longitudeDelta: 7))
-    
-    var mapView = MKMapView()
-    
+
+    @State private var locations = [Location]()
+        
     var body: some View {
         
         NavigationView {
             ZStack {
-                Map(coordinateRegion: $mapRegion, annotationItems: Location.exampleLocations) { location in
+                Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
                     MapAnnotation(coordinate: location.coordinates) {
                         NavigationLink {
                             DetailView(name: location.name, miesto: location.coordinates)
@@ -87,7 +87,7 @@ struct ContentView: View {
                 print(firstLocation.locality)
 
                 let newLocation = Location(name: firstLocation.locality ?? "N/A", coordinates: coordinates)
-                Location.exampleLocations.append(newLocation)
+                locations.append(newLocation)
                 
             }
         }
