@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB05618B2800A7250043E488 /* Pocasie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB05618A2800A7250043E488 /* Pocasie.swift */; };
 		EB5C984C27FDCBBE006D98BC /* PocasieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */; };
 		EB5C984E27FDCBBE006D98BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C984D27FDCBBE006D98BC /* ContentView.swift */; };
 		EB5C985027FDCBC2006D98BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5C984F27FDCBC2006D98BC /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB05618A2800A7250043E488 /* Pocasie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocasie.swift; sourceTree = "<group>"; };
 		EB5C984827FDCBBE006D98BC /* Pocasie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocasie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocasieApp.swift; sourceTree = "<group>"; };
 		EB5C984D27FDCBBE006D98BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */,
 				EB5C984D27FDCBBE006D98BC /* ContentView.swift */,
+				EB05618A2800A7250043E488 /* Pocasie.swift */,
 				EB5C985B27FDF42E006D98BC /* DetailView.swift */,
 				EB5C985927FDCDA6006D98BC /* Location.swift */,
 				EB5C984F27FDCBC2006D98BC /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB5C984E27FDCBBE006D98BC /* ContentView.swift in Sources */,
+				EB05618B2800A7250043E488 /* Pocasie.swift in Sources */,
 				EB5C985C27FDF42E006D98BC /* DetailView.swift in Sources */,
 				EB5C985A27FDCDA6006D98BC /* Location.swift in Sources */,
 				EB5C984C27FDCBBE006D98BC /* PocasieApp.swift in Sources */,
