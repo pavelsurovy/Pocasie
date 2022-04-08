@@ -64,9 +64,7 @@ struct ContentView: View {
         .navigationViewStyle(.stack)
     }
     
-    func pridajLokalitu(coordinates: CLLocationCoordinate2D) {
-        // zisti nazov lokality
-        
+    func pridajLokalitu(coordinates: CLLocationCoordinate2D) {       
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)) { placemark, error in
             
