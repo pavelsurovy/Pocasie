@@ -14,6 +14,7 @@
 		EB5C985327FDCBC2006D98BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5C985227FDCBC2006D98BC /* Preview Assets.xcassets */; };
 		EB5C985A27FDCDA6006D98BC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C985927FDCDA6006D98BC /* Location.swift */; };
 		EB5C985C27FDF42E006D98BC /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C985B27FDF42E006D98BC /* DetailView.swift */; };
+		EB6BA51628013DAD00A31292 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6BA51528013DAD00A31292 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		EB5C985227FDCBC2006D98BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB5C985927FDCDA6006D98BC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EB5C985B27FDF42E006D98BC /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		EB6BA51528013DAD00A31292 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		EB5C984A27FDCBBE006D98BC /* Pocasie */ = {
 			isa = PBXGroup;
 			children = (
+				EB6BA51528013DAD00A31292 /* APIKey.swift */,
 				EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */,
 				EB5C984D27FDCBBE006D98BC /* ContentView.swift */,
 				EB05618A2800A7250043E488 /* Pocasie.swift */,
@@ -150,6 +153,7 @@
 				EB05618B2800A7250043E488 /* Pocasie.swift in Sources */,
 				EB5C985C27FDF42E006D98BC /* DetailView.swift in Sources */,
 				EB5C985A27FDCDA6006D98BC /* Location.swift in Sources */,
+				EB6BA51628013DAD00A31292 /* APIKey.swift in Sources */,
 				EB5C984C27FDCBBE006D98BC /* PocasieApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

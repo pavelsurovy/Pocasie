@@ -16,7 +16,39 @@ struct DetailView: View {
         Text(name)
         Text("\(latitude)")
         Text("\(longitude)")
+        
+            .onAppear {
+                stiahniData(lat: latitude, lon: longitude)
+            }
     }
+    
+    func stiahniData(lat: Double, lon: Double) {
+
+        let urlString = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&appid=\(APIKey.appID)&exclude=minutely,hourly,alerts&units=metric"
+
+        let url = URL(string: urlString)!
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let data = data else {
+                print("Data Error!")
+                return
+            }
+            
+            if let json = try? JSONSerialization.jsonObject(with: data) {
+                print(json)
+            }
+            
+        }
+        task.resume()
+        
+    }
+    
 }
 
 struct DetailView_Previews: PreviewProvider {
