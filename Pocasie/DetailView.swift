@@ -12,10 +12,13 @@ struct DetailView: View {
     let latitude: Double
     let longitude: Double
     
+    @State private var weatherResult: WeatherMain?
+    
     var body: some View {
         Text(name)
         Text("\(latitude)")
         Text("\(longitude)")
+        Text("\(weatherResult?.current.temp ?? 0.0)")
         
             .onAppear {
                 stiahniData(lat: latitude, lon: longitude)
@@ -40,8 +43,8 @@ struct DetailView: View {
                 return
             }
             
-            if let json = try? JSONSerialization.jsonObject(with: data) {
-                print(json)
+            if let json = try? JSONDecoder().decode(WeatherMain.self, from: data) {
+                weatherResult = json
             }
             
         }
