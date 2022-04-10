@@ -15,14 +15,51 @@ struct DetailView: View {
     @State private var weatherResult: WeatherMain?
     
     var body: some View {
-        Text(name)
-        Text("\(latitude)")
-        Text("\(longitude)")
-        Text("\(weatherResult?.current.temp ?? 0.0)")
-        
-            .onAppear {
-                stiahniData(lat: latitude, lon: longitude)
+
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text("\(Text(Date.now, format: .dateTime.day().month().year()))")
+                    .font(.callout)
+                    .padding(.bottom, 20)
+                    
+                Text(weatherResult?.current.weather.first?.main ?? "...")
+                    .font(.system(size: 35))
+                    .padding(.bottom, -30)
+                
+                Text("\(Int(weatherResult?.current.temp ?? 0))°C")
+                    .font(.system(size: 65))
+                    .fontWeight(.black)
+                
+                Text("Pocitová teplota \(Int(weatherResult?.current.feels_like ?? 0))°C")
+                    .padding(.bottom, 50)
+                    .padding(.top, -40)
+                    .foregroundColor(.gray)
+                    
+                if let day = weatherResult?.daily {
+                    ForEach(day, id: \.dt) { day in
+                        
+                        HStack {
+                            Text("\(day.dt)")
+                            
+                            Spacer()
+                            
+                            Text(day.weather.first?.icon ?? "...")
+                            
+                            Spacer()
+                            
+                            Text("\(Int(day.temp.day))°C")
+                            
+                        }
+                        
+                    }
+                }
             }
+        }
+        .navigationTitle(name)
+        .padding(20)
+        .onAppear {
+            stiahniData(lat: latitude, lon: longitude)
+        }
     }
     
     func stiahniData(lat: Double, lon: Double) {
