@@ -62,6 +62,7 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(.stack)
+        .environment(\.colorScheme, .dark)
     }
     
     func pridajLokalitu(coordinates: CLLocationCoordinate2D) {       

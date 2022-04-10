@@ -12,6 +12,18 @@ struct DetailView: View {
     let latitude: Double
     let longitude: Double
     
+    let icon = [
+        "01d": "sun.max.fill", // clear sky
+        "02d": "cloud.sun.fill", // few clouds
+        "03d": "cloud.fill", // scattered clouds
+        "04d": "smoke.fill", // broken clouds
+        "09d": "cloud.sun.rain.fill", // shower rain
+        "10d": "cloud.heavyrain.fill", // rain
+        "11d": "cloud.bolt.fill", // thunderstorm
+        "13d": "cloud.snow.fill", // snow
+        "50d": "text.aligncenter" // mist
+    ]
+    
     @State private var weatherResult: WeatherMain?
     
     var body: some View {
@@ -43,8 +55,9 @@ struct DetailView: View {
                             
                             Spacer()
                             
-                            Text(day.weather.first?.icon ?? "...")
-                            
+                            Image(systemName: icon[day.weather.first!.icon]!)
+                                .symbolRenderingMode(.multicolor)
+                                
                             Spacer()
                             
                             Text("\(Int(day.temp.day))°C")
