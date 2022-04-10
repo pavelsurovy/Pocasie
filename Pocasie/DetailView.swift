@@ -39,7 +39,7 @@ struct DetailView: View {
                     ForEach(day, id: \.dt) { day in
                         
                         HStack {
-                            Text("\(day.dt)")
+                            Text("\(denTyzdna(day.dt))")
                             
                             Spacer()
                             
@@ -87,6 +87,15 @@ struct DetailView: View {
         }
         task.resume()
         
+    }
+    
+    func denTyzdna(_ num: Int) -> String {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("EEEE")
+        let jsonDate = Date(timeIntervalSince1970: TimeInterval(num))
+        let dateString = formatter.string(from: jsonDate).capitalized
+        
+        return dateString
     }
     
 }
