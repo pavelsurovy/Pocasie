@@ -52,6 +52,7 @@ struct DetailView: View {
                         
                         HStack {
                             Text("\(denTyzdna(day.dt))")
+                                .frame(width: 110, alignment: .leading)
                             
                             Spacer()
                             
@@ -61,8 +62,11 @@ struct DetailView: View {
                             Spacer()
                             
                             Text("\(Int(day.temp.day))°C")
-                            
+                                .frame(width: 60, alignment: .trailing)
                         }
+                        .padding(.bottom, 3)
+                        
+                        Divider()
                         
                     }
                 }
