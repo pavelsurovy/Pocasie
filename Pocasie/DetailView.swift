@@ -157,8 +157,10 @@ struct DetailView: View {
         })!
         
         lokality.remove(at: lokalitaPozicia)
-        ContentView.save(arr: lokality)
+        
         znefunkcniTlacitko = true
+        
+        ContentView.save(arr: lokality)
     }
 }
 

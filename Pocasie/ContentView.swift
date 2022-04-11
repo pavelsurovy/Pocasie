@@ -58,7 +58,7 @@ struct ContentView: View {
             .ignoresSafeArea()
             .onAppear {
 //                lokality.append(bratislava)
-                resolve()
+                nacitajUdaje()
             }
         }
         .navigationViewStyle(.stack)
@@ -97,7 +97,7 @@ struct ContentView: View {
         }
     }
     
-    func resolve() {
+    func nacitajUdaje() {
         if let data = UserDefaults.standard.data(forKey: "MapLocations") {
             if let decoded = try? JSONDecoder().decode([Lokality].self, from: data) {
                 lokality = decoded
