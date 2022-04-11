@@ -24,7 +24,7 @@ struct ContentView: View {
                 Map(coordinateRegion: $mapView, annotationItems: lokality) { lokalita in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: lokalita.latitude, longitude: lokalita.longitude)) {
                         NavigationLink {
-                            DetailView(name: lokalita.name, latitude: lokalita.latitude, longitude: lokalita.longitude)
+                            DetailView(lokality: lokality, name: lokalita.name, latitude: lokalita.latitude, longitude: lokalita.longitude)
                         } label: {
                             
                             VStack {
@@ -93,7 +93,7 @@ struct ContentView: View {
             let newLocation = Lokality(name: displayLocationName, latitude: coordinates.latitude, longitude: coordinates.longitude)
             lokality.append(newLocation)
             
-            save()
+            ContentView.save(arr: lokality)
         }
     }
     
@@ -105,8 +105,8 @@ struct ContentView: View {
         }
     }
     
-    func save() {
-        if let encoded = try? JSONEncoder().encode(lokality) {
+    static func save(arr: [Lokality]) {
+        if let encoded = try? JSONEncoder().encode(arr) {
             UserDefaults.standard.set(encoded, forKey: "MapLocations")
         }
     }

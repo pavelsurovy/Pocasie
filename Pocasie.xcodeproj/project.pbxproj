@@ -62,9 +62,9 @@
 				EB6BA51528013DAD00A31292 /* APIKey.swift */,
 				EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */,
 				EB5C984D27FDCBBE006D98BC /* ContentView.swift */,
-				EB05618A2800A7250043E488 /* Pocasie.swift */,
 				EB5C985B27FDF42E006D98BC /* DetailView.swift */,
 				EB5C985927FDCDA6006D98BC /* Location.swift */,
+				EB05618A2800A7250043E488 /* Pocasie.swift */,
 				EB5C984F27FDCBC2006D98BC /* Assets.xcassets */,
 				EB5C985127FDCBC2006D98BC /* Preview Content */,
 			);
