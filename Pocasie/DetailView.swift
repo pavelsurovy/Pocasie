@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct DetailView: View {
+    @State var lokality: [Lokality]
+    @State private var weatherResult: WeatherMain?
+    @State private var znefunkcniTlacitko = false
+    @State private var urciteZmazat = false
     let name: String
     let latitude: Double
     let longitude: Double
@@ -43,8 +47,6 @@ struct DetailView: View {
         }
     }
     
-    @State private var weatherResult: WeatherMain?
-    
     var body: some View {
 
         ScrollView {
@@ -75,7 +77,7 @@ struct DetailView: View {
                             
                             Spacer()
                             
-                            Image(systemName: icon[day.weather.first!.icon]!)
+                            Image(systemName: icon[day.weather.first!.icon] ?? "exclamationmark.square")
                                 .symbolRenderingMode(.multicolor)
                                 
                             Spacer()
@@ -86,20 +88,36 @@ struct DetailView: View {
                         .padding(.bottom, 3)
                         
                         Divider()
-                        
                     }
                 }
+                
+                HStack {
+                    Spacer()
+                    
+                    Button {
+                        urciteZmazat = true
+                    } label: {
+                        Image(systemName: "trash")
+                            .foregroundColor(znefunkcniTlacitko ? .clear : .red)
+                    }
+                    .disabled(znefunkcniTlacitko)
+                    .padding(.top, 40)
+                }
+                .frame(maxWidth: .infinity)
+                .alert("Zmazať \(name)?", isPresented: $urciteZmazat) {
+                    Button("Zmazať", role: .destructive) { delete() }
+                    Button("Zrušiť", role: .cancel) { }
+                }
             }
+            .padding(.horizontal, 20)
         }
         .navigationTitle(name)
-        .padding(20)
         .onAppear {
             stiahniData(lat: latitude, lon: longitude)
         }
     }
     
     func stiahniData(lat: Double, lon: Double) {
-
         let urlString = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&appid=\(APIKey.appID)&exclude=minutely,hourly,alerts&units=metric"
 
         let url = URL(string: urlString)!
@@ -119,7 +137,6 @@ struct DetailView: View {
             if let json = try? JSONDecoder().decode(WeatherMain.self, from: data) {
                 weatherResult = json
             }
-            
         }
         task.resume()
         
@@ -134,10 +151,20 @@ struct DetailView: View {
         return dateString
     }
     
+    func delete() {
+        let lokalitaPozicia = lokality.firstIndex(where: { miesto in
+            miesto.latitude == latitude
+        })!
+        
+        lokality.remove(at: lokalitaPozicia)
+        ContentView.save(arr: lokality)
+        znefunkcniTlacitko = true
+    }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(name: "Ružomberok", latitude: 46.0, longitude: 20.1)
+        DetailView(lokality: [Lokality](), name: "Ružomberok", latitude: 46.0, longitude: 20.1)
+            .preferredColorScheme(.dark)
     }
 }
