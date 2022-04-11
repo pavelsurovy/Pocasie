@@ -24,6 +24,25 @@ struct DetailView: View {
         "50d": "text.aligncenter" // mist
     ]
     
+    var svkDescription: String {
+        switch weatherResult?.current.weather.first!.main {
+        case "Clear":
+            return "Jasno"
+        case "Clouds":
+            return "Oblačno"
+        case "Thunderstorm":
+            return "Búrka"
+        case "Drizzle":
+            return "Mrholenie"
+        case "Rain":
+            return "Dážď"
+        case "Snow":
+            return "Sneženie"
+        default:
+            return "..."
+        }
+    }
+    
     @State private var weatherResult: WeatherMain?
     
     var body: some View {
@@ -34,7 +53,7 @@ struct DetailView: View {
                     .font(.callout)
                     .padding(.bottom, 20)
                     
-                Text(weatherResult?.current.weather.first?.main ?? "...")
+                Text(svkDescription)
                     .font(.system(size: 35))
                     .padding(.bottom, -30)
                 
