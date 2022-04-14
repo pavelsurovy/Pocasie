@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EB05618B2800A7250043E488 /* Pocasie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB05618A2800A7250043E488 /* Pocasie.swift */; };
 		EB1211862804A20A00ADBD2C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1211852804A20A00ADBD2C /* DetailView.swift */; };
+		EB46914C28082BD000B8E192 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB46914B28082BD000B8E192 /* ContentViewModel.swift */; };
+		EB46914F28082BEE00B8E192 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB46914E28082BEE00B8E192 /* DetailViewModel.swift */; };
 		EB5C984C27FDCBBE006D98BC /* PocasieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */; };
 		EB5C984E27FDCBBE006D98BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C984D27FDCBBE006D98BC /* ContentView.swift */; };
 		EB5C985027FDCBC2006D98BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5C984F27FDCBC2006D98BC /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* Begin PBXFileReference section */
 		EB05618A2800A7250043E488 /* Pocasie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocasie.swift; sourceTree = "<group>"; };
 		EB1211852804A20A00ADBD2C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		EB46914B28082BD000B8E192 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		EB46914E28082BEE00B8E192 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		EB5C984827FDCBBE006D98BC /* Pocasie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocasie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocasieApp.swift; sourceTree = "<group>"; };
 		EB5C984D27FDCBBE006D98BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 		EB1211842804A14300ADBD2C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				EB46914B28082BD000B8E192 /* ContentViewModel.swift */,
+				EB46914E28082BEE00B8E192 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -176,9 +182,11 @@
 				EB5C984E27FDCBBE006D98BC /* ContentView.swift in Sources */,
 				EB05618B2800A7250043E488 /* Pocasie.swift in Sources */,
 				EB1211862804A20A00ADBD2C /* DetailView.swift in Sources */,
+				EB46914C28082BD000B8E192 /* ContentViewModel.swift in Sources */,
 				EB5C985A27FDCDA6006D98BC /* Location.swift in Sources */,
 				EB6BA51628013DAD00A31292 /* APIKey.swift in Sources */,
 				EB5C984C27FDCBBE006D98BC /* PocasieApp.swift in Sources */,
+				EB46914F28082BEE00B8E192 /* DetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

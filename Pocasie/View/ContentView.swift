@@ -9,23 +9,13 @@ import MapKit
 import SwiftUI
 
 struct ContentView: View {
-    @State private var mapView = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 48.92, longitude: 19.64),
-        span: MKCoordinateSpan(latitudeDelta: 7, longitudeDelta: 7))
     
-    let lokality = [
-        Lokality(name: "Bratislava", latitude: 48.1458, longitude: 17.1071),
-        Lokality(name: "Banská Štiavnica", latitude: 48.4587, longitude: 18.8931),
-        Lokality(name: "Košice", latitude: 48.7203, longitude: 21.2574),
-        Lokality(name: "Liptovský Mikuláš", latitude: 49.0822, longitude: 19.6132)
-    ]
-    
-    let iconSize: CGFloat = 30
+    @StateObject private var contentModel = ContentViewModel()
     
     var body: some View {
         NavigationView {
             ZStack {
-                Map(coordinateRegion: $mapView, annotationItems: lokality) { lokalita in
+                Map(coordinateRegion: $contentModel.mapView, annotationItems: contentModel.lokality) { lokalita in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: lokalita.latitude, longitude: lokalita.longitude)) {
                         NavigationLink {
                             DetailView(lokalita: lokalita)
@@ -34,7 +24,7 @@ struct ContentView: View {
                             VStack {
                                 Image(systemName: "mappin.circle.fill")
                                     .resizable()
-                                    .frame(width: iconSize, height: iconSize)
+                                    .frame(width: contentModel.iconSize, height: contentModel.iconSize)
                                     .foregroundColor(.red)
                                 
                                 Text(lokalita.name)
