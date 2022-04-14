@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct DetailView: View {
-    @State var lokality: [Lokality]
+    var lokalita: Lokality
+    
     @State private var weatherResult: WeatherMain?
-    @State private var znefunkcniTlacitko = false
-    @State private var urciteZmazat = false
-    let name: String
-    let latitude: Double
-    let longitude: Double
     
     let icon = [
         "01d": "sun.max.fill", // clear sky
@@ -90,30 +86,12 @@ struct DetailView: View {
                         Divider()
                     }
                 }
-                
-                HStack {
-                    Spacer()
-                    
-                    Button {
-                        urciteZmazat = true
-                    } label: {
-                        Image(systemName: "trash")
-                            .foregroundColor(znefunkcniTlacitko ? .clear : .red)
-                    }
-                    .disabled(znefunkcniTlacitko)
-                    .padding(.top, 40)
-                }
-                .frame(maxWidth: .infinity)
-                .alert("Zmazať \(name)?", isPresented: $urciteZmazat) {
-                    Button("Zmazať", role: .destructive) { delete() }
-                    Button("Zrušiť", role: .cancel) { }
-                }
             }
             .padding(.horizontal, 20)
         }
-        .navigationTitle(name)
+        .navigationTitle(lokalita.name)
         .onAppear {
-            stiahniData(lat: latitude, lon: longitude)
+            stiahniData(lat: lokalita.latitude, lon: lokalita.longitude)
         }
     }
     
@@ -150,23 +128,12 @@ struct DetailView: View {
         
         return dateString
     }
-    
-    func delete() {
-        let lokalitaPozicia = lokality.firstIndex(where: { miesto in
-            miesto.latitude == latitude
-        })!
-        
-        lokality.remove(at: lokalitaPozicia)
-        
-        znefunkcniTlacitko = true
-        
-        ContentView.save(arr: lokality)
-    }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(lokality: [Lokality](), name: "Ružomberok", latitude: 46.0, longitude: 20.1)
+        let bs = Lokality(name: "Banská Štiavnica", latitude: 48.4587, longitude: 18.8931)
+        DetailView(lokalita: bs)
             .preferredColorScheme(.dark)
     }
 }

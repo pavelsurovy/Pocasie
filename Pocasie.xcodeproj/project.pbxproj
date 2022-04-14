@@ -8,24 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		EB05618B2800A7250043E488 /* Pocasie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB05618A2800A7250043E488 /* Pocasie.swift */; };
+		EB1211862804A20A00ADBD2C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1211852804A20A00ADBD2C /* DetailView.swift */; };
 		EB5C984C27FDCBBE006D98BC /* PocasieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */; };
 		EB5C984E27FDCBBE006D98BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C984D27FDCBBE006D98BC /* ContentView.swift */; };
 		EB5C985027FDCBC2006D98BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5C984F27FDCBC2006D98BC /* Assets.xcassets */; };
 		EB5C985327FDCBC2006D98BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5C985227FDCBC2006D98BC /* Preview Assets.xcassets */; };
 		EB5C985A27FDCDA6006D98BC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C985927FDCDA6006D98BC /* Location.swift */; };
-		EB5C985C27FDF42E006D98BC /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C985B27FDF42E006D98BC /* DetailView.swift */; };
 		EB6BA51628013DAD00A31292 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6BA51528013DAD00A31292 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EB05618A2800A7250043E488 /* Pocasie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocasie.swift; sourceTree = "<group>"; };
+		EB1211852804A20A00ADBD2C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		EB5C984827FDCBBE006D98BC /* Pocasie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocasie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocasieApp.swift; sourceTree = "<group>"; };
 		EB5C984D27FDCBBE006D98BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EB5C984F27FDCBC2006D98BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB5C985227FDCBC2006D98BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB5C985927FDCDA6006D98BC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		EB5C985B27FDF42E006D98BC /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		EB6BA51528013DAD00A31292 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,6 +40,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB1211822804A13800ADBD2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB6BA51528013DAD00A31292 /* APIKey.swift */,
+				EB5C985927FDCDA6006D98BC /* Location.swift */,
+				EB05618A2800A7250043E488 /* Pocasie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EB1211832804A13E00ADBD2C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB5C984D27FDCBBE006D98BC /* ContentView.swift */,
+				EB1211852804A20A00ADBD2C /* DetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB1211842804A14300ADBD2C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		EB5C983F27FDCBBE006D98BC = {
 			isa = PBXGroup;
 			children = (
@@ -59,12 +85,10 @@
 		EB5C984A27FDCBBE006D98BC /* Pocasie */ = {
 			isa = PBXGroup;
 			children = (
-				EB6BA51528013DAD00A31292 /* APIKey.swift */,
+				EB1211842804A14300ADBD2C /* ViewModel */,
+				EB1211832804A13E00ADBD2C /* View */,
+				EB1211822804A13800ADBD2C /* Model */,
 				EB5C984B27FDCBBE006D98BC /* PocasieApp.swift */,
-				EB5C984D27FDCBBE006D98BC /* ContentView.swift */,
-				EB5C985B27FDF42E006D98BC /* DetailView.swift */,
-				EB5C985927FDCDA6006D98BC /* Location.swift */,
-				EB05618A2800A7250043E488 /* Pocasie.swift */,
 				EB5C984F27FDCBC2006D98BC /* Assets.xcassets */,
 				EB5C985127FDCBC2006D98BC /* Preview Content */,
 			);
@@ -151,7 +175,7 @@
 			files = (
 				EB5C984E27FDCBBE006D98BC /* ContentView.swift in Sources */,
 				EB05618B2800A7250043E488 /* Pocasie.swift in Sources */,
-				EB5C985C27FDF42E006D98BC /* DetailView.swift in Sources */,
+				EB1211862804A20A00ADBD2C /* DetailView.swift in Sources */,
 				EB5C985A27FDCDA6006D98BC /* Location.swift in Sources */,
 				EB6BA51628013DAD00A31292 /* APIKey.swift in Sources */,
 				EB5C984C27FDCBBE006D98BC /* PocasieApp.swift in Sources */,
