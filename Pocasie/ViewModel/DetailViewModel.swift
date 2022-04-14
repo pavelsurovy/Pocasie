@@ -60,7 +60,9 @@ class DetailViewModel: ObservableObject {
             }
             
             if let json = try? JSONDecoder().decode(WeatherMain.self, from: data) {
-                self.weatherResult = json
+                DispatchQueue.main.async {
+                    self.weatherResult = json
+                }
             }
         }
         task.resume()
