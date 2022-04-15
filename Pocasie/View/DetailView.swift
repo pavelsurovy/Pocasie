@@ -16,7 +16,7 @@ struct DetailView: View {
 
         ScrollView {
             VStack(alignment: .leading) {
-                Text("\(Text(Date.now, format: .dateTime.day().month().year()))")
+                Text("\(Date.now, format: .dateTime.day().month().year())")
                     .font(.callout)
                     .padding(.bottom, 20)
                     
