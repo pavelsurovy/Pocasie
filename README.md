@@ -8,7 +8,7 @@ Veľmi ľahko si ukážeme prácu s MapKit-om.
 Zameriame sa na parsovanie dát zo súboru JSON do podoby s ktorou vieme pracovať.
 Jemne sa pozrieme aj na softvérovú architektúru, konkrétne MVVM.
 
-![Pocasie screenshot](https://raw.githubusercontent.com/pavelsurovy/Pocasie/main/Pocasie screenshot.png)
+![Pocasie screenshot](https://raw.githubusercontent.com/pavelsurovy/Pocasie/main/Pocasie%20screenshot.png)
 
 ## Úloha
 
