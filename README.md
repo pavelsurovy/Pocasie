@@ -26,7 +26,7 @@ Na stránke [https://api.nasa.gov](https://api.nasa.gov) si vyhľadajte APOD - A
 S parametrom [&COUNT=1](https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=1) dostanete vždy random 1 post pri zavolaní.  
 Po dvojťuknutí na fotografiu chceme, aby sa načítala opäť ďalšia, náhodná :twisted_rightwards_arrows: fotografia.
 
-Pre získanie obrázka zo vzdialeného servera je potrebné použiť AsyncImage().
+Pre získanie obrázka zo vzdialeného servera použite AsyncImage().
 ```
 AsyncImage(url: URL(string: "...")) { image in
     image.resizable()
@@ -36,6 +36,8 @@ AsyncImage(url: URL(string: "...")) { image in
         .frame(height: 300)
 }
 ```
+
+Pre dvojťuknutie vám pomôže zavesiť príkaz `.onTapGesture` za obrázok...
 
 Teraz viete všetko :brain: čo je potrebné k vytvoreniu svojej aplikácie. Pustite sa do toho!
 
