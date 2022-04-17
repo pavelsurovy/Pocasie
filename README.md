@@ -13,7 +13,7 @@ Jemne sa pozrieme aj na softvérovú architektúru :building_construction:, konk
 # Úloha
 
 ## Vytvoriť svoju vlastnú aplikáciu!
-Na stránke [https://api.nasa.gov](https://api.nasa.gov) si vyhľadajte APOD - Astronomy Picture of the Day :milky_way:, teda API pre túto stránku [https://apod.nasa.gov/apod/astropix.html](https://apod.nasa.gov/apod/astropix.html). Registrácia pre API kľúč :key: je free. Postačuje použiť ich [DEMO_KEY](https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY) ak ste šikovni a bude vám na vytvorenie stačiť 30 zavolaní do hodiny. S vlastným kľúčom :key: je počet callov obmedzený na 1000 za hodinu. To je myslím že viac ako dosť.
+Na stránke [https://api.nasa.gov](https://api.nasa.gov) si vyhľadajte APOD - Astronomy Picture of the Day :milky_way:, teda API pre túto stránku [https://apod.nasa.gov/apod/astropix.html](https://apod.nasa.gov/apod/astropix.html). Registrácia pre API kľúč :key: je free a s ňou máte k dispozícii 1000 callov za hodinu :thumbsup:. Bez registrácie je [DEMO_KEY](https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY) tento vám poskytuje 30 callov za hodinu :confused:.
 
 ### Chceme:
 * fotografiu
