@@ -1,6 +1,6 @@
 # Pocasie
 
-iOS :iphone: aplilkácia v rámci kurzu L2C :books: na sledovanie počasia :sun_behind_rain_cloud: v nadefinovaných lokalitách :compass:.  
+iOS :iphone: aplilkácia v rámci kurzu [Skillmea](https://skillmea.sk/) :books: na sledovanie počasia :sun_behind_rain_cloud: v nadefinovaných lokalitách :compass:.  
 Aplikácia sťahuje dáta o počasí v reálnom čase z [OpenWeatherMap.org](https://openweathermap.org) vo formáte JSON.
     
 Veľmi ľahko si ukážeme prácu s MapKit-om :world_map:.  
