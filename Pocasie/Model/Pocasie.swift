@@ -7,34 +7,20 @@
 
 import Foundation
 
-struct WeatherMain: Codable {
-    let lat: Double
-    let lon: Double
-    let current: WeatherCurrent
-    let daily: [WeatherDaily]
+struct VisualCrossing: Codable {
+    let currentConditions: CurrentConditions
+    let days: [Days]
     
-    struct WeatherCurrent: Codable {
+    struct CurrentConditions: Codable {
         let temp: Double
-        let feels_like: Double
-        let weather: [WeatherDescription]
-        
-        struct WeatherDescription: Codable {
-            let main: String
-            let icon: String
-        }
+        let feelslike: Double
+        let icon: String
     }
     
-    struct WeatherDaily: Codable {
-        let dt: Int
-        let temp: DailyTemp
-        let weather: [DailyDescription]
-        
-        struct DailyTemp: Codable {
-            let day: Double
-        }
-        
-        struct DailyDescription: Codable {
-            let icon: String
-        }
+    struct Days: Codable {
+        let datetimeEpoch: Int
+        let temp: Double
+        let icon: String
+
     }
 }
