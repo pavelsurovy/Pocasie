@@ -1,7 +1,7 @@
 # Pocasie
 
 iOS :iphone: aplilkácia v rámci kurzu [Skillmea](https://skillmea.sk/) :books: na sledovanie počasia :sun_behind_rain_cloud: v nadefinovaných lokalitách :compass:.  
-Aplikácia sťahuje dáta o počasí v reálnom čase z [OpenWeatherMap.org](https://openweathermap.org) vo formáte JSON.
+Aplikácia sťahuje dáta o počasí v reálnom čase z [VisualCrossing.com](https://visualcrossing.com) vo formáte JSON.
     
 Veľmi ľahko si ukážeme prácu s MapKit-om :world_map:.  
 Zameriame sa na parsovanie dát zo vzdialeného servera a súboru JSON do podoby s ktorou vieme pracovať.  
