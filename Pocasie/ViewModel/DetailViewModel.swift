@@ -8,65 +8,64 @@
 import Foundation
 
 class DetailViewModel: ObservableObject {
-
-    @Published var weatherResult: WeatherMain?
+    
+    @Published var weatherResult: VisualCrossing?
 
     let icon = [
-        "01d": "sun.max.fill", // clear sky
-        "02d": "cloud.sun.fill", // few clouds
-        "03d": "cloud.fill", // scattered clouds
-        "04d": "smoke.fill", // broken clouds
-        "09d": "cloud.sun.rain.fill", // shower rain
-        "10d": "cloud.heavyrain.fill", // rain
-        "11d": "cloud.bolt.fill", // thunderstorm
-        "13d": "cloud.snow.fill", // snow
-        "50d": "text.aligncenter" // mist
+        "snow": "cloud.snow.fill", // snow
+        "rain": "cloud.rain.fill", // rain
+        "fog": "cloud.fog.fill", // mist / fog
+        "wind": "wind", // windy
+        "cloudy": "cloud.fill", // clouds
+        "partly-cloudy-day": "cloud.sun.fill", // few clouds day
+        "partly-cloudy-night": "cloud.moon.fill", // few clouds night
+        "clear-day": "sun.max.fill", // clear sky day
+        "clear-night": "moon.stars.fill" // clear sky night
     ]
 
     var svkDescription: String {
-        switch weatherResult?.current.weather.first!.main {
-        case "Clear":
-            return "Jasno"
-        case "Clouds":
-            return "Oblačno"
-        case "Thunderstorm":
-            return "Búrka"
-        case "Drizzle":
-            return "Mrholenie"
-        case "Rain":
-            return "Dážď"
-        case "Snow":
+        switch weatherResult?.currentConditions.icon {
+        case "snow":
             return "Sneženie"
+        case "rain":
+            return "Dážď"
+        case "fog":
+            return "Hmla"
+        case "wind":
+            return "Veterno"
+        case "cloudy":
+            return "Oblačno"
+        case "partly-cloudy-day", "partly-cloudy-night":
+            return "Polooblačno"
         default:
-            return "..."
+            return "Jasno"
         }
     }
-
+    
     func stiahniData(lat: Double, lon: Double) {
-        let urlString = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&appid=\(APIKey.appID)&exclude=minutely,hourly,alerts&units=metric"
+        let urlString = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/\(lat),\(lon)?unitGroup=metric&include=current,days&key=\(APIKey.appID)&contentType=json"
 
         let url = URL(string: urlString)!
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            
+
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 return
             }
-            
+
             guard let data = data else {
                 print("Data Error!")
                 return
             }
-            
-            if let json = try? JSONDecoder().decode(WeatherMain.self, from: data) {
+
+            if let json = try? JSONDecoder().decode(VisualCrossing.self, from: data) {
                 DispatchQueue.main.async {
                     self.weatherResult = json
                 }
             }
         }
         task.resume()
-        
     }
     
     func denTyzdna(_ num: Int) -> String {
