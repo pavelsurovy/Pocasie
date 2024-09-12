@@ -8,10 +8,11 @@
 import SwiftUI
 
 @main
-struct PocasieApp: App {
+struct PocasickoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.colorScheme, .dark)
         }
     }
 }
